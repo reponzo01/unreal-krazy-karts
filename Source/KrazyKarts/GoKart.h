@@ -44,7 +44,7 @@ private:
 
 	// Minimum radius of the car turning circle at full lock (m).
 	UPROPERTY(EditAnywhere)
-	float MinTurningRadius = 30;
+	float MinTurningRadius = 10;
 
 	// Higher means more drag (kg/m).
 	UPROPERTY(EditAnywhere)
@@ -64,8 +64,18 @@ private:
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_MoveRight(float Value);
 
+	UPROPERTY(Replicated)
 	FVector Velocity;
 
+	UPROPERTY(ReplicatedUsing=OnRep_ReplicatedTransform)
+	FTransform ReplicatedTransform;
+
+	UFUNCTION()
+	void OnRep_ReplicatedTransform();
+
+	UPROPERTY(Replicated)
 	float Throttle;
+
+	UPROPERTY(Replicated)
 	float SteeringThrow;
 };
