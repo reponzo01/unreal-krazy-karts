@@ -60,7 +60,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	void SimulateMove(FGoKartMove Move);
+	void SimulateMove(const FGoKartMove& Move);
+
+	FGoKartMove CreateMove(float DeltaTime);
+	void ClearAcknowledgedMoves(FGoKartMove LastMove);
 
 	FVector GetAirResistance();
 	FVector GetRollingResistance();
@@ -105,6 +108,7 @@ private:
 	void OnRep_ServerState();
 
 	float Throttle;
-
 	float SteeringThrow;
+
+	TArray<FGoKartMove> UnacknowledgedMoves;
 };
