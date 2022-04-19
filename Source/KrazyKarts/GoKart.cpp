@@ -16,23 +16,6 @@ AGoKart::AGoKart()
 
 	MovementReplicator = CreateDefaultSubobject<UGoKartMovementReplicator>(TEXT("MovementReplicator"));
 	MovementComponent = CreateDefaultSubobject<UGoKartMovementComponent>(TEXT("MovementComponent"));
-
-	if (MovementComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("constructor movement comp is null"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("constructor movement comp is NOT null"));
-	}
-	if (MovementReplicator == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("constructor movement rep is null"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("constructor movement rep is NOT null"));
-	}
 }
 
 // Called when the game starts or when spawned
@@ -80,7 +63,6 @@ void AGoKart::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AGoKart::MoveForward(float Value)
 {
-	//UE_LOG(LogTemp, Warning, TEXT("forward value: %f"), Value);
 	if (MovementComponent == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("movement comp is null"));
