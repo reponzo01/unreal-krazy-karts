@@ -33,7 +33,7 @@ private:
 
 	void MoveRight(float Value);
 
-	UPROPERTY(VisibleAnywhere)
+	//UPROPERTY(VisibleAnywhere)
 	UGoKartMovementComponent* MovementComponent;
 
 	UPROPERTY(VisibleAnywhere)
